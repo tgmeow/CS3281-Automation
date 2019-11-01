@@ -1,4 +1,3 @@
-from datetime import datetime
 import git
 import os
 import pytz
@@ -12,7 +11,6 @@ Has actions depending on status (commit all grade.md) (clone from user lists in 
 # TODO put hard coded things in config file, put groups in a single table rather than
 #  individual files for single read to mem.
 def main():
-    input_command = ''
     assignments_dir = os.path.dirname(os.getcwd())
     print(assignments_dir)
     assignment = Assignment(assignments_dir)
@@ -27,13 +25,14 @@ def main():
 
     # TODO(HIGH) Add flush=True to most/all of the looped print statements.
     while True:
-        input_command = input('Command: (help, q, activate, push_grading, status, print_grades, check_commits, check_commit_date)\n')
+        input_command = input('Command: (help, q, activate, push_grading, status,'
+                              ' print_grades, check_commits, check_commit_date)\n')
         ic_arr = input_command.split(' ')
         # TODO(LOW) use map
         if ic_arr[0] == 'q':
             break
         elif ic_arr[0] == 'help':
-            print('TODO LOLOL') # TODO(MED) add help
+            print('TODO LOLOL')  # TODO(MED) add help
         elif ic_arr[0] == 'activate':
             if len(ic_arr) == 1:
                 assignment.choose_assignment()
@@ -148,7 +147,7 @@ class Assignment:
 
         if os.path.isdir(self.assignments_path_root):
             assignment_path = os.path.join(self.assignments_path_root,
-                                self.assignment_folder_template % self.assignment_number)
+                                           self.assignment_folder_template % self.assignment_number)
             # Create assignment dir if not there.
             if not os.path.isdir(assignment_path):
                 os.mkdir(assignment_path)
@@ -158,9 +157,9 @@ class Assignment:
                     continue
                 print('Cloning user: %s' % github_id, flush=True)
                 # TODO(LOW) ensure repo_path does not exist (shouldn't happen if creating new assignment dir) else ask
-                repo_path = os.path.join(assignment_path, 'assignment-%d-%s'%(self.assignment_number,github_id))
-                repo = git.repo.Repo.clone_from('https://github.com/cs3281/assignment-%d-%s.git'%(self.assignment_number, github_id),
-                                                repo_path)
+                repo_path = os.path.join(assignment_path, 'assignment-%d-%s' % (self.assignment_number, github_id))
+                repo = git.repo.Repo.clone_from('https://github.com/cs3281/assignment-%d-%s.git'
+                                                % (self.assignment_number, github_id), repo_path)
         return
 
     def check_for_new_commits(self):
@@ -208,7 +207,6 @@ class Assignment:
                 tz = pytz.timezone('America/Chicago')
                 dt = commit_datetime.astimezone(tz)
                 print(dt.strftime('%Y-%m-%d %H:%M:%S'), flush=True)
-
 
     def print_grades(self):
         if not self._check_activated():

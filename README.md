@@ -2,7 +2,7 @@
 
 This is a basic python3 utility program to help with batch git clone, push, and a few other operations.   
 ## Installation and Running
-You need python3 with pip3.   
+You need python3 with pip.   
 I am using pipenv to manage dependencies.   
 ```
 pipenv install
@@ -44,3 +44,6 @@ push_grading
 # Exit the program
 q
 ```
+
+*Screenshot* 
+![screenshot of example](https://raw.githubusercontent.com/tgmeow/CS3281-Automation/master/Example1.PNG)

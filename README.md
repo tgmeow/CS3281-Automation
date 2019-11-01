@@ -23,6 +23,27 @@ Basic commands:
 - check_commit_date   - prints the commit date of the latest commit for each repository for the current assignment.   
 - help   - doesn't do anything
 
+### Directory Structure
+The expected directory structure that this program uses is the following. The groupN.txt files are lists (separated by new line) of github IDs for that specified group number.
+```
+|-- assignment1
+|   |-- assignment-1-student123
+|   |-- assignment-1-student234
+|   `-- assignment-1-student345
+|-- assignment2
+|   |-- assignment-2-student123
+|   |-- assignment-2-student234
+|   `-- assignment-2-student345
+|-- Automation
+|   |-- ...
+|   `-- CS3281Automation.py
+|-- group1.txt
+|-- group2.txt
+|-- group3.txt
+|-- group4.txt
+`-- group5.txt
+```
+
 ### Example usage
 ```bash
 python3 CS3281Automation.py
